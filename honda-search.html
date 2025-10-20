@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kết quả tìm kiếm Honda</title>
+  <link rel="stylesheet" href="honda-search.css">
+</head>
+<body>
+  <main class="container">
+    <div class="hs-header">
+  <div class="hs-left">
+    <div class="hs-logo">☆</div>
+  </div>
+  <div class="hs-center">
+    <div class="hs-search">
+      <input class="hs-input" type="text" value="honda">
+      <span class="hs-divider"></span>
+      <img class="hs-icon" src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="search">
+    </div>
+    <div class="hs-links">
+      <a href="#" onclick="toggleAdvancedSearch(); return false;">Tìm kiếm nâng cao <span class="hs-caret">▼</span></a>
+      <span class="hs-sep">|</span>
+      <a href="#" onclick="showLoginPopup(); return false;">Nhãn hiệu đã lưu</a>
+      <span class="hs-sep">|</span>
+      <a href="#" onclick="showLoginPopup(); return false;">Nhãn hiệu theo dõi</a>
+    </div>
+  </div>
+  <div class="hs-right">
+    <div class="hs-flag"><span>★</span></div>
+    <span class="hs-lang">vi ▾</span>
+    <span class="hs-sep">|</span>
+    <a href="#">Bảng giá</a>
+    <span class="hs-sep">|</span>
+    <a href="#">Đăng nhập</a>
+  </div>
+
+</div>
+
+  <!-- Advanced Search Form -->
+  <div id="advancedSearchForm" class="hs-advanced-panel" style="display: none;">
+    <div class="hs-advanced-grid">
+      <input placeholder="Số bằng" />
+      <input placeholder="Sản phẩm (cà ph*, ... )" />
+      <div class="hs-status-checkboxes">
+        <span>Trạng thái</span>
+        <label class="capbang"><input type="checkbox"> Cấp bằng</label>
+        <label class="danggiaiquyet"><input type="checkbox"> Đang giải quyết</label>
+        <label class="rutdon"><input type="checkbox"> Rút đơn</label>
+        <label class="tuchoi"><input type="checkbox"> Từ chối</label>
+      </div>
+      <input placeholder="Đại diện SHCN" />
+      <input placeholder="Chủ đơn" />
+      <input placeholder="Địa chỉ chủ đơn" />
+      <input placeholder="Ngày nộp đơn" />
+      <input placeholder="Ngày công bố" />
+      <input placeholder="Ngày cấp bằng" />
+      <input placeholder="Ngày hết hạn" />
+    </div>
+    
+    <!-- AI Image Search Upload Area -->
+    <div class="hs-upload-area">
+      <div class="hs-upload-box" id="hsDropZone">
+        <h3>Tìm kiếm bằng hình ảnh AI (thử nghiệm)</h3>
+        <span>📤 Nhấp để tải lên, Kéo thả hoặc DÁN HÌNH ẢNH</span>
+        <p>(Hỗ trợ: JPG, PNG, GIF, dung lượng nhỏ hơn 5MB)</p>
+        <input type="file" id="hsFileInput" hidden accept="image/*">
+      </div>
+    </div>
+  </div>
+
+    <div class="hs-results">Tìm thấy 3 kết quả. <span class="hs-filter">(1 điều kiện lọc)</span></div>
+    <div class="hs-buttons">
+      <button class="hs-btn" onclick="showLoginPopup()">Lưu nhãn hiệu</button>
+      <button class="hs-btn" onclick="showLoginPopup()">Xuất excel (79 nhãn hiệu)</button>
+    </div>
+    <table class="hs-table">
+      <thead>
+        <tr class="hs-header-row">
+          <th class="hs-th">STT</th>
+          <th class="hs-th">Mẫu Nhãn</th>
+          <th class="hs-th">Nhãn Hiệu</th>
+          <th class="hs-th">Nhóm</th>
+          <th class="hs-th">Trạng Thái</th>
+          <th class="hs-th">Ngày Nộp Đơn</th>
+          <th class="hs-th">Số Đơn</th>
+          <th class="hs-th">Chủ Đơn</th>
+          <th class="hs-th">Đại diện SHCN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="hs-td">1</td>
+          <td class="hs-td">
+            <div class="hs-trademark-cell-content">
+              <img src="picture/madrid_1391311.jpg" alt="Honda Trademark" class="hs-logo-img">
+              <button class="hs-view-btn" onclick="openImageInNewTab('picture/madrid_1391311.jpg')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6a0dad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+            </div>
+          </td>
+          <td class="hs-td">HONDA</td>
+          <td class="hs-td">01, 02, 03, ...</td>
+          <td class="hs-td"><span class="hs-status hs-status-active">Cấp bằng</span></td>
+          <td class="hs-td">27.10.2016</td>
+          <td class="hs-td"><a href="honda.html" class="hs-link">1391311</a><br><span class="hs-note">(đơn quốc tế)</span></td>
+          <td class="hs-td">HONDA MOTOR CO., LTD.</td>
+          <td class="hs-td">SAITO Seiichi</td>
+        </tr>
+        <tr>
+          <td class="hs-td">2</td>
+          <td class="hs-td">
+            <div class="hs-trademark-cell-content">
+              <img src="picture/madrid_762837.jpg" alt="Honda Trademark" class="hs-logo-img">
+              <button class="hs-view-btn" onclick="openImageInNewTab('picture/madrid_762837.jpg')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6a0dad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+            </div>
+          </td>
+          <td class="hs-td">HONDA</td>
+          <td class="hs-td">11, 12</td>
+          <td class="hs-td"><span class="hs-status hs-status-active">Cấp bằng</span></td>
+          <td class="hs-td">27.04.2001</td>
+          <td class="hs-td"><a href="#" class="hs-link">762837</a></td>
+          <td class="hs-td">Honda Motor Co., Ltd.</td>
+          <td class="hs-td">SAITO Seiichi</td>
+        </tr>
+        <tr>
+          <td class="hs-td">3</td>
+          <td class="hs-td">
+            <div class="hs-trademark-cell-content">
+              <img src="picture/4199627733.jpg" alt="Honda Trademark" class="hs-logo-img">
+              <button class="hs-view-btn" onclick="openImageInNewTab('picture/4199627733.jpg')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6a0dad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+            </div>
+          </td>
+          <td class="hs-td">HONDA</td>
+          <td class="hs-td">37</td>
+          <td class="hs-td"><span class="hs-status hs-status-expired">Hết hạn</span><br><span class="hs-note">Số bằng 23341<br>(hết hạn quá 3 năm)</span></td>
+          <td class="hs-td">14.03.1996</td>
+          <td class="hs-td"><a href="#" class="hs-link">4-1996-27733</a></td>
+          <td class="hs-td">HONDA GIKEN KOGYO KABUSHIKI KAISHA (HONDA MOTOR CO., LTD.)</td>
+          <td class="hs-td">Công ty Cổ phần Sở hữu công nghiệp INVESTIP</td>
+        </tr>
+        <tr>
+          <td class="hs-td">4</td>
+          <td class="hs-td">
+            <div class="hs-trademark-cell-content">
+              <img src="picture/4199420807.jpg" alt="Honda Trademark" class="hs-logo-img">
+              <button class="hs-view-btn" onclick="openImageInNewTab('picture/4199420807.jpg')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6a0dad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+            </div>
+          </td>
+          <td class="hs-td">HONDA</td>
+          <td class="hs-td">4</td>
+          <td class="hs-td"><span class="hs-status hs-status-expired">Hết hạn</span><br><span class="hs-note">Số bằng 25533</span></td>
+          <td class="hs-td">26.11.1994</td>
+          <td class="hs-td"><a href="#" class="hs-link">4-1994-20807</a></td>
+          <td class="hs-td">HONDA GIKEN</td>
+          <td class="hs-td">Công ty Cổ phần</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <!-- Login Popup -->
+  <div id="loginPopup" class="hs-popup-overlay">
+    <div class="hs-popup-content">
+      <div class="hs-popup-header">
+        <h3>Đăng nhập</h3>
+        <button class="hs-popup-close" onclick="hideLoginPopup()">&times;</button>
+      </div>
+      <div class="hs-popup-body">
+        <p>Bạn cần đăng nhập để sử dụng tính năng này.</p>
+        <div class="hs-popup-buttons">
+          <button class="hs-btn hs-btn-primary" onclick="goToLogin()">Đăng nhập</button>
+          <button class="hs-btn hs-btn-secondary" onclick="hideLoginPopup()">Hủy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="honda-search.js"></script>
+</body>
+</html>
+

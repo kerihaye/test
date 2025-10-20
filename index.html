@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vietnam Trademark UI Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-banner">
+    💡 Hướng dẫn <b>TÌM KHÁCH HÀNG</b> hiệu quả bằng Gói Doanh Nghiệp 
+    <a href="#">Xem ngay ›</a>
+    <button class="close-btn">✕</button>
+  </div>
+
+  <div class="top-right-bar">
+    <div class="lang-menu">
+      <img src="https://flagcdn.com/w20/vn.png" alt="Vietnam flag">
+      <span>vi ▼</span>
+    </div>
+    <span class="divider">|</span>
+    <a href="#" class="link">Bảng giá</a>
+    <span class="divider">|</span>
+    <a href="#" class="link">Đăng nhập</a>
+  </div>
+
+  <main class="container">
+    <div class="logo">
+      <div class="logo-icon">★</div>
+      <div class="logo-text">VIETNAM TRADEMARK</div>
+    </div>
+
+    <div class="search-box">
+      <input type="text" placeholder="Nhập Số đơn hoặc Nhãn hiệu (kidd*, kidd?, ...)">
+      <button class="search-btn">🔍</button>
+    </div>
+
+    <div class="upload-area">
+      
+      <div class="upload-box" id="dropZone">
+        <h3>Tìm kiếm bằng hình ảnh AI (thử nghiệm)</h3>
+        <span>📤 Nhấp để tải lên, Kéo thả hoặc DÁN HÌNH ẢNH</span>
+        <p>(Hỗ trợ: JPG, PNG, GIF, dung lượng nhỏ hơn 5MB)</p>
+        <input type="file" id="fileInput" hidden accept="image/*">
+      </div>
+    </div>
+
+    <div class="small-links">
+      <a href="#" id="advToggle">Tìm kiếm nâng cao</a> |
+      <a href="#">Nhãn hiệu đã lưu</a> |
+      <a href="#">Nhãn hiệu theo dõi</a>
+    </div>
+
+    <div class="advanced-panel" id="advancedPanel" aria-hidden="true">
+      <div class="advanced-grid">
+        <input placeholder="Số bằng" />
+        <input placeholder="Sản phẩm (cà ph*, ... )" />
+        <div class="status-checkboxes" style="grid-column: span 2;">
+          <span>Trạng thái</span>
+          <label class="capbang"><input type="checkbox"> Cấp bằng</label>
+          <label class="danggiaiquyet"><input type="checkbox"> Đang giải quyết</label>
+          <label class="rutdon"><input type="checkbox"> Rút đơn</label>
+          <label class="tuchoi"><input type="checkbox"> Từ chối</label>
+        </div>
+        <input placeholder="Đại diện SHCN" />
+        <input placeholder="Chủ đơn" />
+        <input placeholder="Địa chỉ chủ đơn" />
+        <input placeholder="Ngày nộp đơn" />
+        <input placeholder="Ngày công bố" />
+        <input placeholder="Ngày cấp bằng" />
+        <input placeholder="Ngày hết hạn" />
+      </div>
+    </div>
+
+    <div class="lang">
+      Ngôn ngữ: <a href="#">English</a> | <a href="#">中文</a>
+    </div>
+  </main>
+
+  <div class="info-container">
+  <div class="info-box">
+  <h3>Thông tin mới nhất</h3>
+  <ul>
+    <li><a href="#">Tra Cứu Nhãn Hiệu Trên VietnamTrademark.net: Hướng Dẫn Chi Tiết</a></li>
+    <li><a href="#">Tính năng xuất Excel danh sách nhãn hiệu</a></li>
+    <li><a href="#">Dễ dàng tìm lại nhãn hiệu với tính năng Bookmark</a></li>
+    <li><a href="#">Hướng dẫn khai thác hiệu quả Gói tra cứu Doanh Nghiệp</a></li>
+  </ul>
+</div>
+
+
+  <div class="faq-box">
+    <h3>Câu hỏi thường gặp</h3>
+    <ul>
+      <li><a href="#">VietnamTrademark.net cung cấp những dịch vụ gì?</a></li>
+      <li><a href="#">VietnamTrademark.net khác gì so với các trang tra cứu nhãn hiệu khác?</a></li>
+      <li><a href="#">Sử dụng VietnamTrademark.net có mất phí không?</a></li>
+      <li><a href="#">Dữ liệu trên VietnamTrademark.net được cập nhật như thế nào?</a></li>
+    </ul>
+  </div>
+</div>
+
+  <footer class="footer">
+  <div class="footer-links">
+    <a href="#">Bảng giá</a>
+    <span>|</span>
+    <a href="#">Hợp tác</a>
+    <span>|</span>
+    <a href="#">Thông báo</a>
+    <span>|</span>
+    <a href="#">Tuyên bố miễn trừ</a>
+  </div>
+  <div class="footer-copy">
+    © 2025 - VietnamTrademark.net
+  </div>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
