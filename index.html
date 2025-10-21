@@ -3,117 +3,220 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vietnam Trademark UI Clone</title>
+  <title data-bind="page-title">Vietnam Trademark UI Clone</title>
   <link rel="stylesheet" href="style.css">
+  <meta name="api-endpoint" content="/api">
+  <meta name="data-source" content="backend">
 </head>
 <body>
-  <div class="top-banner">
-    💡 Hướng dẫn <b>TÌM KHÁCH HÀNG</b> hiệu quả bằng Gói Doanh Nghiệp 
-    <a href="#">Xem ngay ›</a>
-    <button class="close-btn">✕</button>
+  <div class="top-banner" data-section="promotional-banner">
+    <span data-bind="banner-text">💡 Hướng dẫn <b>TÌM KHÁCH HÀNG</b> hiệu quả bằng Gói Doanh Nghiệp</span>
+    <a href="#" data-action="view-guide">Xem ngay ›</a>
+    <button class="close-btn" data-action="close-banner">✕</button>
   </div>
 
-  <div class="top-right-bar">
-    <div class="lang-menu">
-      <img src="https://flagcdn.com/w20/vn.png" alt="Vietnam flag">
-      <span>vi ▼</span>
+  <div class="top-right-bar" data-section="top-navigation">
+    <div class="lang-menu" data-action="change-language">
+      <img src="https://flagcdn.com/w20/vn.png" alt="Vietnam flag" data-bind="current-flag">
+      <span data-bind="current-language">vi ▼</span>
     </div>
     <span class="divider">|</span>
-    <a href="#" class="link">Bảng giá</a>
+    <a href="#" class="link" data-action="pricing">Bảng giá</a>
     <span class="divider">|</span>
-    <a href="#" class="link">Đăng nhập</a>
+    <a href="#" class="link" data-action="login">Đăng nhập</a>
   </div>
 
-  <main class="container">
-    <div class="logo">
+  <main class="container" data-page="home">
+    <div class="logo" data-section="brand-logo">
       <div class="logo-icon">★</div>
-      <div class="logo-text">VIETNAM TRADEMARK</div>
+      <div class="logo-text" data-bind="site-name">VIETNAM TRADEMARK</div>
     </div>
 
-    <div class="search-box">
-      <input type="text" placeholder="Nhập Số đơn hoặc Nhãn hiệu (kidd*, kidd?, ...)">
-      <button class="search-btn">🔍</button>
+    <div class="search-box" data-section="main-search">
+      <input type="text" placeholder="Nhập Số đơn hoặc Nhãn hiệu (kidd*, kidd?, ...)" 
+             data-search="trademark" id="mainSearchInput" data-bind="search-placeholder">
+      <button class="search-btn" data-action="search">🔍</button>
     </div>
 
-    <div class="upload-area">
-      
-      <div class="upload-box" id="dropZone">
-        <h3>Tìm kiếm bằng hình ảnh AI (thử nghiệm)</h3>
-        <span>📤 Nhấp để tải lên, Kéo thả hoặc DÁN HÌNH ẢNH</span>
-        <p>(Hỗ trợ: JPG, PNG, GIF, dung lượng nhỏ hơn 5MB)</p>
-        <input type="file" id="fileInput" hidden accept="image/*">
+    <div class="upload-area" data-section="image-search">
+      <div class="upload-box" id="dropZone" data-action="upload-image">
+        <h3 data-bind="upload-title">Tìm kiếm bằng hình ảnh AI (thử nghiệm)</h3>
+        <span data-bind="upload-instructions">📤 Nhấp để tải lên, Kéo thả hoặc DÁN HÌNH ẢNH</span>
+        <p data-bind="upload-requirements">(Hỗ trợ: JPG, PNG, GIF, dung lượng nhỏ hơn 5MB)</p>
+        <input type="file" id="fileInput" hidden accept="image/*" data-field="image-upload">
       </div>
     </div>
 
-    <div class="small-links">
-      <a href="#" id="advToggle">Tìm kiếm nâng cao</a> |
-      <a href="#">Nhãn hiệu đã lưu</a> |
-      <a href="#">Nhãn hiệu theo dõi</a>
+    <div class="small-links" data-section="quick-links">
+      <a href="#" id="advToggle" data-action="advanced-search">Tìm kiếm nâng cao</a> |
+      <a href="#" data-action="saved-trademarks">Nhãn hiệu đã lưu</a> |
+      <a href="#" data-action="tracked-trademarks">Nhãn hiệu theo dõi</a>
     </div>
 
-    <div class="advanced-panel" id="advancedPanel" aria-hidden="true">
+    <div class="advanced-panel" id="advancedPanel" aria-hidden="true" data-section="advanced-search">
       <div class="advanced-grid">
-        <input placeholder="Số bằng" />
-        <input placeholder="Sản phẩm (cà ph*, ... )" />
-        <div class="status-checkboxes" style="grid-column: span 2;">
+        <input placeholder="Số bằng" data-field="certificate-number" data-bind="advanced-search.certificateNumber" />
+        <input placeholder="Sản phẩm (cà ph*, ... )" data-field="product" data-bind="advanced-search.product" />
+        <div class="status-checkboxes" style="grid-column: span 2;" data-field="status">
           <span>Trạng thái</span>
-          <label class="capbang"><input type="checkbox"> Cấp bằng</label>
-          <label class="danggiaiquyet"><input type="checkbox"> Đang giải quyết</label>
-          <label class="rutdon"><input type="checkbox"> Rút đơn</label>
-          <label class="tuchoi"><input type="checkbox"> Từ chối</label>
+          <label class="capbang"><input type="checkbox" data-bind="advanced-search.status.granted"> Cấp bằng</label>
+          <label class="danggiaiquyet"><input type="checkbox" data-bind="advanced-search.status.processing"> Đang giải quyết</label>
+          <label class="rutdon"><input type="checkbox" data-bind="advanced-search.status.withdrawn"> Rút đơn</label>
+          <label class="tuchoi"><input type="checkbox" data-bind="advanced-search.status.rejected"> Từ chối</label>
         </div>
-        <input placeholder="Đại diện SHCN" />
-        <input placeholder="Chủ đơn" />
-        <input placeholder="Địa chỉ chủ đơn" />
-        <input placeholder="Ngày nộp đơn" />
-        <input placeholder="Ngày công bố" />
-        <input placeholder="Ngày cấp bằng" />
-        <input placeholder="Ngày hết hạn" />
+        <input placeholder="Đại diện SHCN" data-field="representative" data-bind="advanced-search.representative" />
+        <input placeholder="Chủ đơn" data-field="applicant" data-bind="advanced-search.applicant" />
+        <input placeholder="Địa chỉ chủ đơn" data-field="applicant-address" data-bind="advanced-search.applicantAddress" />
+        <input placeholder="Ngày nộp đơn" data-field="filing-date" data-bind="advanced-search.filingDate" />
+        <input placeholder="Ngày công bố" data-field="publication-date" data-bind="advanced-search.publicationDate" />
+        <input placeholder="Ngày cấp bằng" data-field="grant-date" data-bind="advanced-search.grantDate" />
+        <input placeholder="Ngày hết hạn" data-field="expiry-date" data-bind="advanced-search.expiryDate" />
       </div>
     </div>
 
-    <div class="lang">
-      Ngôn ngữ: <a href="#">English</a> | <a href="#">中文</a>
+    <div class="lang" data-section="language-selection">
+      <span data-bind="language-label">Ngôn ngữ:</span> 
+      <a href="#" data-action="change-language" data-lang="en">English</a> | 
+      <a href="#" data-action="change-language" data-lang="zh">中文</a>
     </div>
   </main>
 
-  <div class="info-container">
-  <div class="info-box">
-  <h3>Thông tin mới nhất</h3>
-  <ul>
-    <li><a href="#">Tra Cứu Nhãn Hiệu Trên VietnamTrademark.net: Hướng Dẫn Chi Tiết</a></li>
-    <li><a href="#">Tính năng xuất Excel danh sách nhãn hiệu</a></li>
-    <li><a href="#">Dễ dàng tìm lại nhãn hiệu với tính năng Bookmark</a></li>
-    <li><a href="#">Hướng dẫn khai thác hiệu quả Gói tra cứu Doanh Nghiệp</a></li>
-  </ul>
-</div>
+  <div class="info-container" data-section="content-sections">
+    <div class="info-box" data-section="latest-info">
+      <h3 data-bind="info-title">Thông tin mới nhất</h3>
+      <ul data-bind="info-links">
+        <li><a href="#" data-action="view-article" data-article="search-guide">Tra Cứu Nhãn Hiệu Trên VietnamTrademark.net: Hướng Dẫn Chi Tiết</a></li>
+        <li><a href="#" data-action="view-article" data-article="excel-export">Tính năng xuất Excel danh sách nhãn hiệu</a></li>
+        <li><a href="#" data-action="view-article" data-article="bookmark">Dễ dàng tìm lại nhãn hiệu với tính năng Bookmark</a></li>
+        <li><a href="#" data-action="view-article" data-article="enterprise-guide">Hướng dẫn khai thác hiệu quả Gói tra cứu Doanh Nghiệp</a></li>
+      </ul>
+    </div>
 
+    <div class="faq-box" data-section="faq">
+      <h3 data-bind="faq-title">Câu hỏi thường gặp</h3>
+      <ul data-bind="faq-links">
+        <li><a href="#" data-action="view-faq" data-faq="services">VietnamTrademark.net cung cấp những dịch vụ gì?</a></li>
+        <li><a href="#" data-action="view-faq" data-faq="difference">VietnamTrademark.net khác gì so với các trang tra cứu nhãn hiệu khác?</a></li>
+        <li><a href="#" data-action="view-faq" data-faq="pricing">Sử dụng VietnamTrademark.net có mất phí không?</a></li>
+        <li><a href="#" data-action="view-faq" data-faq="data-update">Dữ liệu trên VietnamTrademark.net được cập nhật như thế nào?</a></li>
+      </ul>
+    </div>
+  </div>
 
-  <div class="faq-box">
-    <h3>Câu hỏi thường gặp</h3>
-    <ul>
-      <li><a href="#">VietnamTrademark.net cung cấp những dịch vụ gì?</a></li>
-      <li><a href="#">VietnamTrademark.net khác gì so với các trang tra cứu nhãn hiệu khác?</a></li>
-      <li><a href="#">Sử dụng VietnamTrademark.net có mất phí không?</a></li>
-      <li><a href="#">Dữ liệu trên VietnamTrademark.net được cập nhật như thế nào?</a></li>
-    </ul>
-  </div>
-</div>
+  <footer class="footer" data-section="footer">
+    <div class="footer-links" data-bind="footer-links">
+      <a href="#" data-action="view-pricing">Bảng giá</a>
+      <span>|</span>
+      <a href="#" data-action="view-partnership">Hợp tác</a>
+      <span>|</span>
+      <a href="#" data-action="view-announcements">Thông báo</a>
+      <span>|</span>
+      <a href="#" data-action="view-disclaimer">Tuyên bố miễn trừ</a>
+    </div>
+    <div class="footer-copy" data-bind="copyright">
+      © 2025 - VietnamTrademark.net
+    </div>
+  </footer>
 
-  <footer class="footer">
-  <div class="footer-links">
-    <a href="#">Bảng giá</a>
-    <span>|</span>
-    <a href="#">Hợp tác</a>
-    <span>|</span>
-    <a href="#">Thông báo</a>
-    <span>|</span>
-    <a href="#">Tuyên bố miễn trừ</a>
-  </div>
-  <div class="footer-copy">
-    © 2025 - VietnamTrademark.net
-  </div>
-</footer>
+  <!-- Home Page Data Template -->
+  <script type="application/json" id="home-data-template">
+  {
+    "pageTitle": "Vietnam Trademark UI Clone",
+    "bannerText": "💡 Hướng dẫn <b>TÌM KHÁCH HÀNG</b> hiệu quả bằng Gói Doanh Nghiệp",
+    "siteName": "VIETNAM TRADEMARK",
+    "searchPlaceholder": "Nhập Số đơn hoặc Nhãn hiệu (kidd*, kidd?, ...)",
+    "uploadTitle": "Tìm kiếm bằng hình ảnh AI (thử nghiệm)",
+    "uploadInstructions": "📤 Nhấp để tải lên, Kéo thả hoặc DÁN HÌNH ẢNH",
+    "uploadRequirements": "(Hỗ trợ: JPG, PNG, GIF, dung lượng nhỏ hơn 5MB)",
+    "languageLabel": "Ngôn ngữ:",
+    "currentLanguage": "vi ▼",
+    "currentFlag": "https://flagcdn.com/w20/vn.png",
+    "infoTitle": "Thông tin mới nhất",
+    "infoLinks": [
+      {
+        "title": "Tra Cứu Nhãn Hiệu Trên VietnamTrademark.net: Hướng Dẫn Chi Tiết",
+        "article": "search-guide"
+      },
+      {
+        "title": "Tính năng xuất Excel danh sách nhãn hiệu",
+        "article": "excel-export"
+      },
+      {
+        "title": "Dễ dàng tìm lại nhãn hiệu với tính năng Bookmark",
+        "article": "bookmark"
+      },
+      {
+        "title": "Hướng dẫn khai thác hiệu quả Gói tra cứu Doanh Nghiệp",
+        "article": "enterprise-guide"
+      }
+    ],
+    "faqTitle": "Câu hỏi thường gặp",
+    "faqLinks": [
+      {
+        "title": "VietnamTrademark.net cung cấp những dịch vụ gì?",
+        "faq": "services"
+      },
+      {
+        "title": "VietnamTrademark.net khác gì so với các trang tra cứu nhãn hiệu khác?",
+        "faq": "difference"
+      },
+      {
+        "title": "Sử dụng VietnamTrademark.net có mất phí không?",
+        "faq": "pricing"
+      },
+      {
+        "title": "Dữ liệu trên VietnamTrademark.net được cập nhật như thế nào?",
+        "faq": "data-update"
+      }
+    ],
+    "footerLinks": [
+      { "title": "Bảng giá", "action": "view-pricing" },
+      { "title": "Hợp tác", "action": "view-partnership" },
+      { "title": "Thông báo", "action": "view-announcements" },
+      { "title": "Tuyên bố miễn trừ", "action": "view-disclaimer" }
+    ],
+    "copyright": "© 2025 - VietnamTrademark.net",
+    "advancedSearch": {
+      "certificateNumber": "",
+      "product": "",
+      "status": {
+        "granted": false,
+        "processing": false,
+        "withdrawn": false,
+        "rejected": false
+      },
+      "representative": "",
+      "applicant": "",
+      "applicantAddress": "",
+      "filingDate": "",
+      "publicationDate": "",
+      "grantDate": "",
+      "expiryDate": ""
+    }
+  }
+  </script>
+
+  <!-- API Configuration -->
+  <script type="application/json" id="api-config">
+  {
+    "baseUrl": "/api",
+    "endpoints": {
+      "search": "/search",
+      "advanced-search": "/search/advanced",
+      "image-search": "/search/image",
+      "articles": "/articles",
+      "faq": "/faq",
+      "language": "/language",
+      "banner": "/banner"
+    },
+    "methods": {
+      "GET": ["search", "advanced-search", "image-search", "articles", "faq", "language", "banner"],
+      "POST": ["search", "advanced-search", "image-search"],
+      "PUT": ["language", "banner"],
+      "DELETE": ["banner"]
+    }
+  }
+  </script>
 
   <script src="script.js"></script>
 </body>
