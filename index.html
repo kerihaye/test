@@ -1,223 +1,618 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-bind="page-title">Vietnam Trademark UI Clone</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="api-endpoint" content="/api">
-  <meta name="data-source" content="backend">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/news-area.css">
+    <link rel="stylesheet" href="css/content.css">    
+    <link rel="stylesheet" href="css/advertisement.css">
+    <link rel="stylesheet" href="css/subcribe.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <style>
+        
+    </style>
 </head>
 <body>
-  <div class="top-banner" data-section="promotional-banner">
-    <span data-bind="banner-text">💡 Hướng dẫn <b>TÌM KHÁCH HÀNG</b> hiệu quả bằng Gói Doanh Nghiệp</span>
-    <a href="#" data-action="view-guide">Xem ngay ›</a>
-    <button class="close-btn" data-action="close-banner">✕</button>
-  </div>
-
-  <div class="top-right-bar" data-section="top-navigation">
-    <div class="lang-menu" data-action="change-language">
-      <img src="https://flagcdn.com/w20/vn.png" alt="Vietnam flag" data-bind="current-flag">
-      <span data-bind="current-language">vi ▼</span>
-    </div>
-    <span class="divider">|</span>
-    <a href="#" class="link" data-action="pricing">Bảng giá</a>
-    <span class="divider">|</span>
-    <a href="#" class="link" data-action="login">Đăng nhập</a>
-  </div>
-
-  <main class="container" data-page="home">
-    <div class="logo" data-section="brand-logo">
-      <div class="logo-icon">★</div>
-      <div class="logo-text" data-bind="site-name">VIETNAM TRADEMARK</div>
-    </div>
-
-    <div class="search-box" data-section="main-search">
-      <input type="text" placeholder="Nhập Số đơn hoặc Nhãn hiệu (kidd*, kidd?, ...)" 
-             data-search="trademark" id="mainSearchInput" data-bind="search-placeholder">
-      <button class="search-btn" data-action="search">🔍</button>
-    </div>
-
-    <div class="upload-area" data-section="image-search">
-      <div class="upload-box" id="dropZone" data-action="upload-image">
-        <h3 data-bind="upload-title">Tìm kiếm bằng hình ảnh AI (thử nghiệm)</h3>
-        <span data-bind="upload-instructions">📤 Nhấp để tải lên, Kéo thả hoặc DÁN HÌNH ẢNH</span>
-        <p data-bind="upload-requirements">(Hỗ trợ: JPG, PNG, GIF, dung lượng nhỏ hơn 5MB)</p>
-        <input type="file" id="fileInput" hidden accept="image/*" data-field="image-upload">
-      </div>
-    </div>
-
-    <div class="small-links" data-section="quick-links">
-      <a href="#" id="advToggle" data-action="advanced-search">Tìm kiếm nâng cao</a> |
-      <a href="#" data-action="saved-trademarks">Nhãn hiệu đã lưu</a> |
-      <a href="#" data-action="tracked-trademarks">Nhãn hiệu theo dõi</a>
-    </div>
-
-    <div class="advanced-panel" id="advancedPanel" aria-hidden="true" data-section="advanced-search">
-      <div class="advanced-grid">
-        <input placeholder="Số bằng" data-field="certificate-number" data-bind="advanced-search.certificateNumber" />
-        <input placeholder="Sản phẩm (cà ph*, ... )" data-field="product" data-bind="advanced-search.product" />
-        <div class="status-checkboxes" style="grid-column: span 2;" data-field="status">
-          <span>Trạng thái</span>
-          <label class="capbang"><input type="checkbox" data-bind="advanced-search.status.granted"> Cấp bằng</label>
-          <label class="danggiaiquyet"><input type="checkbox" data-bind="advanced-search.status.processing"> Đang giải quyết</label>
-          <label class="rutdon"><input type="checkbox" data-bind="advanced-search.status.withdrawn"> Rút đơn</label>
-          <label class="tuchoi"><input type="checkbox" data-bind="advanced-search.status.rejected"> Từ chối</label>
+    <div id="header">
+        <!--top header-->
+        <div id="top-header">
+            <div id="top-left-header">
+                <div id="date-today"></div>
+            </div>
+            <div id="top-right-header">
+                <a href="https://www.youtube.com/"> <p>ABOUT</p> </a>
+                <a href="https://www.facebook.com/"> <p>CONTACT</p> </a>
+                <div class="dropdown">
+                    <span class="dropbtn">| MY ACCOUNT |</span>
+                    <div class="dropdown-content">
+                        <div class="arrow-up"></div>
+                        <div class="line-container">
+                            <div class="dropdown-line">Get into account</div>
+                        </div>                        
+                        <div class="button-container">
+                            <button class="dropdown-btn">LOGIN</button>                            
+                        </div>
+                    </div>
+                </div>
+            </div>  
         </div>
-        <input placeholder="Đại diện SHCN" data-field="representative" data-bind="advanced-search.representative" />
-        <input placeholder="Chủ đơn" data-field="applicant" data-bind="advanced-search.applicant" />
-        <input placeholder="Địa chỉ chủ đơn" data-field="applicant-address" data-bind="advanced-search.applicantAddress" />
-        <input placeholder="Ngày nộp đơn" data-field="filing-date" data-bind="advanced-search.filingDate" />
-        <input placeholder="Ngày công bố" data-field="publication-date" data-bind="advanced-search.publicationDate" />
-        <input placeholder="Ngày cấp bằng" data-field="grant-date" data-bind="advanced-search.grantDate" />
-        <input placeholder="Ngày hết hạn" data-field="expiry-date" data-bind="advanced-search.expiryDate" />
-      </div>
+        
+        <hr>
+
+        <!--mid header-->
+        <div id="mid-header">
+            <div id="mid-left-header">
+                <div id="newsletter-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"></path>
+                    </svg>
+                </div>
+                <div class="newsletter">
+                    <span>NEWSLETTER</span> 
+                </div>             
+            </div>
+
+            <div id="mid-center-header">
+                <div class="big-tittle">
+                    <span>URBANOBSERVER</span>
+                </div>               
+                <div class="small-tittle">
+                    <span>Gossip & Lifestyle Online Magazine</span>
+                </div>                
+            </div>
+
+            <div id="mid-right-header">
+                <div class="plan-btn">
+                    <button type="button" >PRICING PLAN</button>
+                </div>               
+            </div>
+        </div>
+        
+        <hr>
+
+        <!--bottom header-->
+        <div id="bottom-header">
+            <div id="all">
+                <button id="all-btn">
+                <div class="all-icon">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                        <path d="M945.172 561.724h-866.376c-22.364 0-40.55-18.196-40.55-40.591 0-22.385 18.186-40.581 40.55-40.581h866.365c22.385 0 40.561 18.196 40.561 40.581 0.010 22.395-18.176 40.591-40.55 40.591v0zM945.183 330.403h-866.386c-22.374 0-40.55-18.196-40.55-40.571 0-22.405 18.176-40.612 40.55-40.612h866.376c22.374 0 40.561 18.207 40.561 40.612 0.010 22.364-18.186 40.571-40.55 40.571v0zM945.172 793.066h-866.376c-22.374 0-40.55-18.196-40.55-40.602 0-22.385 18.176-40.581 40.55-40.581h866.365c22.385 0 40.581 18.196 40.581 40.581 0.010 22.395-18.196 40.602-40.571 40.602v0z"></path>
+                    </svg>
+                </div>
+                <div class="all-line">
+                    <div>ALL</div>
+                </div>
+            </button>
+            </div>
+            
+            <div id="other-btn">
+                <ul>
+                    <li><a href="1.html">entertainment</a></li>
+                    <li><a href="2.html">celebrity</a></li>
+                    <li><a href="3.html">scandals</a></li>
+                    <li><a href="4.html">drama</a></li>
+                    <li><a href="5.html">lifestyle</a></li>
+                    <li><a href="6.html">technology</a></li>
+                    <li><a href="7.html">health</a></li>
+                </ul>
+            </div>
+            <div id="search-btn">
+                <a href="#" role="button" aria-label="Search" class="tdb-head-search-btn dropdown-toggle" data-toggle="dropdown">
+                    <span class="tdb-search-icon tdb-search-icon-svg">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                            <path d="M958.484 910.161l-134.543-134.502c63.078-76.595 94.761-170.455 94.7-264.141 0.061-106.414-40.755-213.228-121.917-294.431-81.224-81.183-187.965-121.958-294.349-121.938-106.445-0.020-213.176 40.796-294.38 121.938-81.224 81.203-122.020 188.017-121.979 294.369-0.041 106.445 40.755 213.166 121.979 294.287 81.203 81.285 187.945 122.020 294.38 121.979 93.727 0.041 187.607-31.642 264.11-94.659l134.564 134.564 57.436-57.467zM265.452 748.348c-65.556-65.495-98.14-150.999-98.181-236.882 0.041-85.832 32.625-171.346 98.181-236.913 65.556-65.536 151.060-98.099 236.923-98.14 85.821 0.041 171.346 32.604 236.902 98.14 65.495 65.516 98.099 151.122 98.099 236.913 0 85.924-32.604 171.387-98.099 236.882-65.556 65.495-150.999 98.099-236.902 98.099-85.862 0-171.356-32.604-236.923-98.099z"></path>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
     </div>
 
-    <div class="lang" data-section="language-selection">
-      <span data-bind="language-label">Ngôn ngữ:</span> 
-      <a href="#" data-action="change-language" data-lang="en">English</a> | 
-      <a href="#" data-action="change-language" data-lang="zh">中文</a>
-    </div>
-  </main>
-
-  <div class="info-container" data-section="content-sections">
-    <div class="info-box" data-section="latest-info">
-      <h3 data-bind="info-title">Thông tin mới nhất</h3>
-      <ul data-bind="info-links">
-        <li><a href="#" data-action="view-article" data-article="search-guide">Tra Cứu Nhãn Hiệu Trên VietnamTrademark.net: Hướng Dẫn Chi Tiết</a></li>
-        <li><a href="#" data-action="view-article" data-article="excel-export">Tính năng xuất Excel danh sách nhãn hiệu</a></li>
-        <li><a href="#" data-action="view-article" data-article="bookmark">Dễ dàng tìm lại nhãn hiệu với tính năng Bookmark</a></li>
-        <li><a href="#" data-action="view-article" data-article="enterprise-guide">Hướng dẫn khai thác hiệu quả Gói tra cứu Doanh Nghiệp</a></li>
-      </ul>
+    <div id="compact-header">
+        <div class="big-tittle"><span>URBANOBSERVER</span></div>
+        <button id="all-btn">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                <path d="M945.172 561.724h-866.376c-22.364 0-40.55-18.196-40.55-40.591 0-22.385 18.186-40.581 40.55-40.581h866.365c22.385 0 40.561 18.196 40.561 40.581 0.010 22.395-18.176 40.591-40.55 40.591v0zM945.183 330.403h-866.386c-22.374 0-40.55-18.196-40.55-40.571 0-22.405 18.176-40.612 40.55-40.612h866.376c22.374 0 40.561 18.207 40.561 40.612 0.010 22.364-18.186 40.571-40.55 40.571v0zM945.172 793.066h-866.376c-22.374 0-40.55-18.196-40.55-40.602 0-22.385 18.176-40.581 40.55-40.581h866.365c22.385 0 40.581 18.196 40.581 40.581 0.010 22.395-18.196 40.602-40.571 40.602v0z"></path>
+            </svg>
+            <div>ALL</div>
+        </button>
     </div>
 
-    <div class="faq-box" data-section="faq">
-      <h3 data-bind="faq-title">Câu hỏi thường gặp</h3>
-      <ul data-bind="faq-links">
-        <li><a href="#" data-action="view-faq" data-faq="services">VietnamTrademark.net cung cấp những dịch vụ gì?</a></li>
-        <li><a href="#" data-action="view-faq" data-faq="difference">VietnamTrademark.net khác gì so với các trang tra cứu nhãn hiệu khác?</a></li>
-        <li><a href="#" data-action="view-faq" data-faq="pricing">Sử dụng VietnamTrademark.net có mất phí không?</a></li>
-        <li><a href="#" data-action="view-faq" data-faq="data-update">Dữ liệu trên VietnamTrademark.net được cập nhật như thế nào?</a></li>
-      </ul>
+    <div id="advertisement">
+        <img src="picture/Screenshot 2025-10-24 180508.png" alt="Advertisement Banner">
     </div>
-  </div>
 
-  <footer class="footer" data-section="footer">
-    <div class="footer-links" data-bind="footer-links">
-      <a href="#" data-action="view-pricing">Bảng giá</a>
-      <span>|</span>
-      <a href="#" data-action="view-partnership">Hợp tác</a>
-      <span>|</span>
-      <a href="#" data-action="view-announcements">Thông báo</a>
-      <span>|</span>
-      <a href="#" data-action="view-disclaimer">Tuyên bố miễn trừ</a>
+    <div class="news-area">
+        
+        <div class="news1-box">
+            <div class="news1">
+                <img src="picture/download.png" >
+                <div class="news-title">iuqwhefiquhweif</div>
+                <div class="content-of-the-news">
+                    <div class="news-type">|SCANDAL|</div>
+                    <div class="news-content">jhkbwefiqwhbeifuhqwieoufhqiwqweqweqweqwe234123123oefqwefqwefqwefqwefq</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="news2-box">
+            <div class="news2">
+                <img src="picture/download.png" >
+                <div class="news-title">iuqwhefiquhweif</div>
+                <div class="content-of-the-news">
+                    <div class="news-type">|SCANDAL|</div>
+                    <div class="news-content">jhkbwefiqwhbeifuhqwieoufhqiwqweqweqweqwe234123123oefqwefqwefqwefqwefq</div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="news3-box">
+            <div class="news3">
+                <img src="picture/download.png" >
+                <div class="news-title">iuqwhefiquhweif</div>
+                <div class="content-of-the-news">
+                    <div class="news-type">|SCANDAL|</div>
+                    <div class="news-content">jhkbwefiqwhbeifuhqwieoufhqiwqweqweqweqwe234123123oefqwefqwefqwefqwefq</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="news4-box">
+            <div class="news4">
+                <img src="picture/download.png" >
+                <div class="news-title">iuqwhefiquhweif</div>
+                <div class="content-of-the-news">
+                    <div class="news-type">|SCANDAL|</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="news5-box">
+            <div class="news5">
+                <img src="picture/download.png" >
+                <div class="news-title">iuqwhefiquhweif</div>
+                <div class="content-of-the-news">
+                    <div class="news-type">|SCANDAL|</div>
+                </div>
+            </div>
+        </div>       
+
+        <div class="news6-box">
+            <div class="news6">
+                <img src="picture/download.png" >
+                <div class="news-title">iuqwhefiquhweif</div>
+                <div class="content-of-the-news">
+                    <div class="news-type">|SCANDAL|</div>
+                </div>
+            </div>
+        </div>      
+        
+        <div class="news7-box">
+            <div class="news7">
+                <img src="picture/download.png" >
+                <div class="news-title">iuqwhefiquhweif</div>
+                <div class="content-of-the-news">
+                    <div class="news-type">|SCANDAL|</div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="footer-copy" data-bind="copyright">
-      © 2025 - VietnamTrademark.net
+
+    <div class="subscribe">
+        <div class="subscribe-left">
+            <h2 class="subscribe-title">URBANOBSERVER</h2>
+            <div class="subscribe-line"></div>
+            <p class="subscribe-content">
+            jhkbwefiqwhbeifuhqwieoufhqiwqweqweqweqwe234123123oefqwefqwefqwefqwefq 
+            jhkbwefiqwhbeifuhqwieoufhqiwqweqweqweqwe234123123oefqwefqwefqwefqwefq
+            </p>
+        </div>
+        <div class="subscribe-right">
+            <button class="subscribe-btn">SUBSCRIBE NOW</button>
+        </div>
     </div>
-  </footer>
+    
+    <div class="main-container">
+        <!--left-content-->
+        <div class="top-5-this-week">
+            <div class="top">
+                <div img>
+                    <img src="picture/download.png"  >
+                </div>
+                <div class="top-title">
+                    <div class="title">
+                        <p>jhkbwefiqwhbeifuhqwieoufhqiwqweqweqweqwe234123123oefqwefqwefqwefqwefq</p>
+                    </div>
+                    <div class="theme">
+                        <p>|SCANDAL|</p>
+                    </div>
+                </div>
+            </div>
 
-  <!-- Home Page Data Template -->
-  <script type="application/json" id="home-data-template">
-  {
-    "pageTitle": "Vietnam Trademark UI Clone",
-    "bannerText": "💡 Hướng dẫn <b>TÌM KHÁCH HÀNG</b> hiệu quả bằng Gói Doanh Nghiệp",
-    "siteName": "VIETNAM TRADEMARK",
-    "searchPlaceholder": "Nhập Số đơn hoặc Nhãn hiệu (kidd*, kidd?, ...)",
-    "uploadTitle": "Tìm kiếm bằng hình ảnh AI (thử nghiệm)",
-    "uploadInstructions": "📤 Nhấp để tải lên, Kéo thả hoặc DÁN HÌNH ẢNH",
-    "uploadRequirements": "(Hỗ trợ: JPG, PNG, GIF, dung lượng nhỏ hơn 5MB)",
-    "languageLabel": "Ngôn ngữ:",
-    "currentLanguage": "vi ▼",
-    "currentFlag": "https://flagcdn.com/w20/vn.png",
-    "infoTitle": "Thông tin mới nhất",
-    "infoLinks": [
-      {
-        "title": "Tra Cứu Nhãn Hiệu Trên VietnamTrademark.net: Hướng Dẫn Chi Tiết",
-        "article": "search-guide"
-      },
-      {
-        "title": "Tính năng xuất Excel danh sách nhãn hiệu",
-        "article": "excel-export"
-      },
-      {
-        "title": "Dễ dàng tìm lại nhãn hiệu với tính năng Bookmark",
-        "article": "bookmark"
-      },
-      {
-        "title": "Hướng dẫn khai thác hiệu quả Gói tra cứu Doanh Nghiệp",
-        "article": "enterprise-guide"
-      }
-    ],
-    "faqTitle": "Câu hỏi thường gặp",
-    "faqLinks": [
-      {
-        "title": "VietnamTrademark.net cung cấp những dịch vụ gì?",
-        "faq": "services"
-      },
-      {
-        "title": "VietnamTrademark.net khác gì so với các trang tra cứu nhãn hiệu khác?",
-        "faq": "difference"
-      },
-      {
-        "title": "Sử dụng VietnamTrademark.net có mất phí không?",
-        "faq": "pricing"
-      },
-      {
-        "title": "Dữ liệu trên VietnamTrademark.net được cập nhật như thế nào?",
-        "faq": "data-update"
-      }
-    ],
-    "footerLinks": [
-      { "title": "Bảng giá", "action": "view-pricing" },
-      { "title": "Hợp tác", "action": "view-partnership" },
-      { "title": "Thông báo", "action": "view-announcements" },
-      { "title": "Tuyên bố miễn trừ", "action": "view-disclaimer" }
-    ],
-    "copyright": "© 2025 - VietnamTrademark.net",
-    "advancedSearch": {
-      "certificateNumber": "",
-      "product": "",
-      "status": {
-        "granted": false,
-        "processing": false,
-        "withdrawn": false,
-        "rejected": false
-      },
-      "representative": "",
-      "applicant": "",
-      "applicantAddress": "",
-      "filingDate": "",
-      "publicationDate": "",
-      "grantDate": "",
-      "expiryDate": ""
-    }
-  }
-  </script>
+            <div class="top">
+                <div img>
+                    <img src="picture/download.png" alt="Advertisement Banner">
+                </div>
+                <div class="top-title">
+                    <div class="title">
+                        <p>jhkbwefiqwhbeifuhqwieoufhqiwqweqweqweqwe234123123oefqwefqwefqwefqwefq</p>
+                    </div>
+                    <div class="theme">
+                        <p>|SCANDAL|</p>
+                    </div>
+                </div>
+            </div>
 
-  <!-- API Configuration -->
-  <script type="application/json" id="api-config">
-  {
-    "baseUrl": "/api",
-    "endpoints": {
-      "search": "/search",
-      "advanced-search": "/search/advanced",
-      "image-search": "/search/image",
-      "articles": "/articles",
-      "faq": "/faq",
-      "language": "/language",
-      "banner": "/banner"
-    },
-    "methods": {
-      "GET": ["search", "advanced-search", "image-search", "articles", "faq", "language", "banner"],
-      "POST": ["search", "advanced-search", "image-search"],
-      "PUT": ["language", "banner"],
-      "DELETE": ["banner"]
-    }
-  }
-  </script>
+            <div class="top">
+                <div img>
+                    <img src="picture/download.png" alt="Advertisement Banner">
+                </div>
+                <div class="top-title">
+                    <div class="title">
+                        <p>jhkbwefiqwhbeifuhqwieoufhqiwqweqweqweqwe234123123oefqwefqwefqwefqwefq</p>
+                    </div>
+                    <div class="theme">
+                        <p>|SCANDAL|</p>
+                    </div>
+                </div>
+            </div>
 
-  <script src="script.js"></script>
+            <div class="top">
+                <div img>
+                    <img src="picture/download.png" alt="Advertisement Banner">
+                </div>
+                <div class="top-title">
+                    <div class="title">
+                        <p>jhkbwefiqwhbeifuhqwieoufhqiwqweqweqweqwe234123123oefqwefqwefqwefqwefq</p>
+                    </div>
+                    <div class="theme">
+                        <p>|SCANDAL|</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top">
+                <div img>
+                    <img src="picture/download.png" alt="Advertisement Banner">
+                </div>
+                <div class="top-title">
+                    <div class="title">
+                        <p>jhkbwefiqwhbeifuhqwieoufhqiwqweqweqweqwe234123123oefqwefqwefqwefqwefq</p>
+                    </div>
+                    <div class="theme">
+                        <p>|SCANDAL|</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!--center-content-->
+        <div class="center-content">
+            <div class="center-content-img">
+                <img src="picture/download.png">
+            </div>
+            <div class="center-content-tittle">
+                <p>title</p>
+            </div>
+                
+            <div class="center-content-text" >
+                <div class="center-content-theme">
+                    <p>|drama|</p>
+                </div>
+                <div class="center-content-author">
+                    <p>author</p>
+                </div>
+                <div class="center-content-date">
+                    <p>12/12/1212</p>
+                </div>
+                
+            </div>
+            <div class="center-content-body">
+                <p> content content content content content content</p>
+            </div>
+        </div>
+
+        <!--right-content-->
+        <div class="right-content">
+
+            <div class="right-content-1">
+                <div class="content-title">
+                    <p>POPULAR POSTS</p>
+                </div>
+                <div class="meta-info">
+                    <div class="left-content-theme">
+                        <p>|drama|</p>
+                    </div>
+                    <div class="left-content-date">
+                        <p>123123123123</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-content-2">
+                <div class="content-title">
+                    <p>POPULAR POSTS</p>
+                </div>
+                <div class="meta-info">
+                    <div class="left-content-theme">
+                        <p>|drama|</p>
+                    </div>
+                    <div class="left-content-date">
+                        <p>123123123123</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-content-3">
+                <div class="content-title">
+                    <p>POPULAR POSTS</p>
+                </div>
+                <div class="meta-info">
+                    <div class="left-content-theme">
+                        <p>|drama|</p>
+                    </div>
+                    <div class="left-content-date">
+                        <p>123123123123</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-content-4">
+                <div class="content-title">
+                    <p>POPULAR POSTS</p>
+                </div>
+                <div class="meta-info">
+                    <div class="left-content-theme">
+                        <p>|drama|</p>
+                    </div>
+                    <div class="left-content-date">
+                        <p>123123123123</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-content-5">
+                <div class="content-title">
+                    <p>POPULAR POSTS</p>
+                </div>
+                <div class="meta-info">
+                    <div class="left-content-theme">
+                        <p>|drama|</p>
+                    </div>
+                    <div class="left-content-date">
+                        <p>123123123123</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-content-6">
+                <div class="content-title">
+                    <p>POPULAR POSTS</p>
+                </div>
+                <div class="meta-info">
+                    <div class="left-content-theme">
+                        <p>|drama|</p>
+                    </div>
+                    <div class="left-content-date">
+                        <p>123123123123</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content-7">
+                <div class="content-title">
+                    <p>POPULAR POSTS</p>
+                </div>
+                <div class="meta-info">
+                    <div class="left-content-theme">
+                        <p>|drama|</p>
+                    </div>
+                    <div class="left-content-date">
+                        <p>123123123123</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="footer-top">
+            <div class="footer-top-container" >             
+                <div class="footer-top-left">
+                    <div class="footer-top-left-logo">
+                        <p>UrbanObserver</p>
+                    </div>
+                </div>
+                <div class="footer-top-right">
+                    <div class="footer-top-right-top">
+                        <div class="footer-top-right-top-btn">
+                            <a href="">entertainment</a>
+                            <a href="">celebrity</a>
+                            <a href="">scandals</a>
+                            <a href="">drama</a>
+                            <a href="">lifestyle</a>
+                            <a href="">technology</a>
+                            <a href="">health</a>
+                        </div>
+                    </div>
+                    <div class="footer-top-right-bottom">
+                        <div class="footer-top-right-bottom-btn">
+                            <a href="">about</a>
+                            <a href="">contact</a>
+                            <a href="">privacy policy</a>
+                            <a href="">newsletter</a>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-top">
+
+                <!--about us column-->
+                <div class="about-us">
+                    <div class="about-us-title">
+                        <p> about us </p>
+                    </div>
+                    <div class="about-us-content">
+                        <p>Each template in our ever growing studio library can be added and moved around within any page effortlessly with one click.</p>
+                    </div>
+                    <div class="btn">
+                        <div class="fb-btn">
+                            
+                        </div>
+
+                        <div class="ig-btn">
+                        </div>
+
+                        <div class="tw-btn">
+                        </div>
+                        
+                        <div class="yt-btn">
+                        </div>
+                    </div>
+                </div>
+
+                <!--latest articles column-->
+                <div class="latest-articles">
+                    <div class="latest-articles-title">
+                        <p> latest articles </p>
+                    </div>
+                    <div class="latest-articles-content">
+                        <div class="article-1">
+                            <div class="title-articles-1">
+                                <p>title 1</p>
+                            </div>
+                            <div class="content-articles-1">
+                                <div class="theme-articles-1">
+                                    <p>|drama|</p>
+                                </div>
+                                <div class="date-articles-1">
+                                    <p>12/12/1212</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="article-2">
+                            <div class="title-articles-2">
+                                <p>title 2</p>
+                            </div>
+                            <div class="content-articles-2">
+                                <div class="theme-articles-2">
+                                    <p>|drama|</p>
+                                </div>
+                                <div class="date-articles-2">
+                                    <p>12/12/1212</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="article-3">
+                            <div class="title-articles-3">
+                                <p>title 3</p>
+                            </div>
+                            <div class="content-articles-3">
+                                <div class="theme-articles-3">
+                                    <p>|drama|</p>
+                                </div>
+                                <div class="date-articles-3">
+                                    <p>12/12/1212</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--most popular column-->
+                <div class="most-popular">
+                    <div class="most-popular-title">
+                        <p> most popular </p>
+                    </div>
+                    <div class="most-popular-content">
+                        <div class="popular-1">
+                            <div class="title-popular-1">
+                                <p>title 1</p>
+                            </div>
+                            <div class="content-popular-1">
+                                <div class="theme-popular-1">
+                                    <p>|drama|</p>
+                                </div>
+                                <div class="date-popular-1">
+                                    <p>12/12/1212</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popular-2">
+                            <div class="title-popular-2">
+                                <p>title 2</p>
+                            </div>
+                            <div class="content-popular-2">
+                                <div class="theme-popular-2">
+                                    <p>|drama|</p>
+                                </div>
+                                <div class="date-popular-2">
+                                    <p>12/12/1212</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popular-3">
+                            <div class="title-popular-3">
+                                <p>title 3</p>
+                            </div>
+                            <div class="content-popular-3">
+                                <div class="theme-popular-3">
+                                    <p>|drama|</p>
+                                </div>
+                                <div class="date-popular-3">
+                                    <p>12/12/1212</p>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+
+                <!--subscribe form-->
+                <div class="subcribe-footer">
+                    <form action="#" method="post">
+                        <h2>SUBSCRIBE</h2>
+
+                        <input type="email" id="email" name="email" required placeholder="Email Address">
+
+                        <button type="submit">I WANT IN →</button>
+
+                        <label>
+                        <input type="checkbox" required>
+                        I've read and accept the 
+                        <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+                        </label>
+                    </form>
+                </div>
+            </div>
+
+            
+        </div>
+        
+        <hr>
+
+        <div class ="copyright">
+            <p>© 2024 UrbanObserver - All Rights Reserved.</p>
+        </div>
+    </div>
+
+</body>
+
+
+<script src="script.js"></script>
 </body>
 </html>

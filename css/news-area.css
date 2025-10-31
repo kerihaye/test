@@ -1,0 +1,251 @@
+/* news-area */
+.news-area {
+  margin: 8px 300px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: start;
+  gap: 0px;
+  transition: margin 0.2s ease; 
+}
+
+/* 7 blocks */
+.news1-box {
+  grid-column: span 4;
+  grid-row: span 4;
+  border-top-width: 0px;
+  border-right: 0px;
+  border-bottom: 1px solid black;
+  border-left-width: 0px;
+  position: relative;
+}
+
+.news1-box::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0%;
+  height: 95%;
+  width: 1px;
+  background-color: black;
+}
+
+.news2-box {
+  grid-column: 5 / span 4;
+  grid-row: span 4;
+  border-top-width: 0px;
+  border-right: 0px;
+  border-bottom: 1px solid black;
+  border-left-width: 0px;
+  position: relative;
+}
+
+.news2-box::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0%;
+  height: 95%;
+  width: 1px;          
+  background-color: black; 
+}
+
+.news3-box {
+  grid-column: 9 / span 4;
+  grid-row: span 4;
+  border-top-width: 0px;
+  border-right: 0px;
+  border-bottom: 1px solid black;
+  border-left-width: 0px;
+  position: relative;
+}
+
+.news4-box {
+  grid-column: 1 / span 3;
+  grid-row: 5 / span 3;
+  position: relative;
+}
+
+.news4-box::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 5%;
+  height: 95%;
+  width: 1px;
+  background-color: black;
+}
+
+.news5-box {
+  grid-column: 4 / span 3;
+  grid-row: 5 / span 3;
+  position: relative;
+}
+
+.news5-box::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 5%;
+  height: 95%;
+  width: 1px;
+  background-color: black;
+}
+
+.news6-box {
+  grid-column: 7 / span 3;
+  grid-row: 5 / span 3;
+  position: relative;
+}
+
+.news6-box::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 5%;
+  height: 95%;
+  width: 1px;
+  background-color: black;
+}
+
+.news7-box {
+  grid-column: 10 / span 3;
+  grid-row: 5 / span 3;
+  position: relative;
+}
+
+.news1-box, .news2-box, .news3-box, .news4-box, .news5-box, .news6-box, .news7-box  {
+  display: flex;               
+  justify-content: center;     
+  align-items: center;                      
+  box-sizing: border-box;      
+  padding: 15px;
+}
+
+.news1, .news2, .news3 {
+  position: relative;
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 95%;
+  margin: 0 auto;
+  color: white;
+}
+
+.news4, .news5, .news6, .news7 {
+  position: relative;
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 95%;
+  margin: 0 auto;
+  color: white;
+}
+
+.news1 img,
+.news2 img,
+.news3 img,
+.news4 img,
+.news5 img,
+.news6 img,
+.news7 img {
+  width: 100%;
+  height: 55%;
+  object-fit: cover;
+  display: block;
+}
+
+.content-of-the-news {
+  height: 30%;
+  padding: 30px;
+  text-align: center;
+  background-color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+}
+
+.news-type {
+  color: #d33;
+  font-weight: bold;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+.news-content {
+  color: #333;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.news-title {
+  position: absolute;
+  bottom:45%; 
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background-color: #fff;
+  padding: 8px 14px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+  border: 2px solid #000;
+  color: #d33;
+  box-shadow: 2px 2px 0px #000;
+  z-index: 2;
+}
+
+
+/* margin smaller when window smaller */
+@media (max-width: 1600px) {
+  .news-area {
+    margin: 8px 200px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .news-area {
+    margin: 8px 100px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .news-area {
+    margin: 8px 5px;
+  }
+}
+
+
+/* Responsive: when window screen <= 992px */
+@media (max-width: 992px) { 
+  .news-area { 
+    margin: 8px 5px;  
+    grid-template-columns: 1fr;  
+    grid-auto-rows: auto; 
+    gap: 16px;
+  } 
+
+  .news1-box, .news2-box, .news3-box, .news4-box, .news5-box, .news6-box, .news7-box { 
+    grid-column: 1 / -1;  
+    grid-row: 50px;       
+    width: 100%;          
+  }
+  
+  .news1-box::after,
+  .news2-box::after,
+  .news3-box::after,
+  .news4-box::after,
+  .news5-box::after,
+  .news6-box::after,
+  .news7-box::after {
+    display: none;
+  }
+
+  .news1-box, .news2-box, .news3-box,
+  .news4-box, .news5-box, .news6-box{
+    border-bottom: 1px solid black;
+  }
+}

@@ -1,0 +1,82 @@
+.subscribe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #000;
+  padding: 20px 40px;
+  margin: 20px auto;
+  max-width: 1000px;
+  gap: 40px;
+}
+
+.subscribe-left {
+  flex: 1;
+}
+
+.subscribe-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.subscribe-line {
+  width: 60px;
+  height: 3px;
+  background-color: #e74c3c;
+  margin: 8px 0 20px;
+}
+
+.subscribe-content {
+  font-size: 16px;
+  color: #222;
+  line-height: 1.6;
+}
+
+.subscribe-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 40px;
+  border-left: 1px solid #000;
+}
+
+.subscribe-btn {
+  background-color: #e74c3c;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  border: none;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-size: 16px;
+  letter-spacing: 1px;
+  transition: background 0.3s ease;
+}
+
+.subscribe-btn:hover {
+  background-color: #c0392b;
+}
+
+/* 🔹 Responsive: be 1 column when minimize */
+@media (max-width: 768px) {
+  .subscribe {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .subscribe-right {
+    border-left: none;
+    border-top: 1px solid #000;
+    padding-left: 0;
+    padding-top: 20px;
+  }
+
+  .subscribe-line {
+    margin: 8px auto 20px;
+  }
+
+  .subscribe-btn {
+    margin-top: 10px;
+  }
+}

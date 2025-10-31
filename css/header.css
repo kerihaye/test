@@ -1,0 +1,379 @@
+
+#top-header{
+    display:flex;
+    font-family: sans-serif;    
+    justify-content:space-between;
+    align-items:center;
+    padding:0px 24px;
+    margin: 10px 300px;
+    height: 20px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+#top-left-header, #top-right-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+#top-right-header a{
+    color:black;
+    text-decoration:none;
+    font-weight: 550;
+}
+
+@media(max-width:600px){
+    #top-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+    }
+}
+
+/* dropdown when hover my account btn*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown .dropbtn {
+  font-weight: 600;
+  cursor: pointer;
+  color:red;
+}
+
+.dropdown-text {
+  background-color: #f2f2f2;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid black;
+  user-select: none;
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  top: 100%; 
+  right: 0;
+  width: 200px;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 10;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  margin-top:10px;
+  pointer-events: none;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid black;
+  position: absolute;
+  top: 7px;
+  right: 15px;
+}
+
+/* content of login dropdown */
+.line-container {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 0px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.dropdown-line {
+  font-weight: bold;
+}
+
+/* button login */
+.button-container {
+  margin: 10px 40px 10px 10px; /* top right bottom left */
+}
+
+.dropdown-btn {
+  padding: 8px 14px 8px 7px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dropdown-btn:hover {
+  background-color: rgb(242, 128, 128);
+}
+
+/* mid-header */
+#mid-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; 
+  gap: 20px; 
+  padding: 10px 40px;
+  margin: 0 auto; 
+  max-width: 1200px; 
+  background-color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+/* mid left header */
+#mid-left-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+#newsletter-icon svg {
+  fill: black;
+  width: 22px;
+  height: 22px;
+  transition: fill 0.2s ease;
+}
+
+.newsletter span {
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: black;
+  transition: color 0.2s ease;
+}
+
+#mid-left-header:hover #newsletter-icon svg {
+  fill: red;
+}
+
+#mid-left-header:hover #newsletter-icon span {
+  color: red;
+}
+
+/* mid center header */
+#mid-center-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.big-tittle span {
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 10px;
+}
+
+.small-tittle span {
+  font-size: 15px;
+  color: red;
+}
+
+/* mid right header */
+.plan-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.plan-btn button {
+  padding: 8px 16px;
+  border: 2px solid black;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: black;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.plan-btn button:hover {
+  color: red;
+  border-color: red;
+}
+
+/* Responsive: window screen <= 992px */
+@media (max-width: 992px) {
+  #mid-header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .big-tittle span {
+    font-size: 40px;
+  }
+}
+
+/* Responsive: window screen <= 600px */
+@media (max-width: 600px) {
+  #mid-header {
+    padding: 15px 20px;
+    gap: 10px;
+  }
+
+  .big-tittle span {
+    font-size: 32px;
+  }
+
+  .small-tittle span {
+    font-size: 13px;
+  }
+
+  .plan-btn button {
+    padding: 6px 12px;
+  }
+}
+
+/* bottom-header */
+#bottom-header {
+  padding:0px 24px;
+  margin: 0px 100px;
+  display: flex;
+  align-items: center;
+  justify-content:center; 
+  padding: 10px 20px;
+}
+
+/* ALL button */
+#all-btn {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  background-color: black;
+  margin-right: 20px;
+}
+
+#all-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+  transition: fill 0.3s, color 0.3s;
+}
+
+#all-btn div {
+  color: white;
+  transition: color 0.3s;
+}
+
+#all-btn:hover{
+  background-color: red;
+}
+
+#other-btn ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#other-btn a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  transition: color 0.3s;
+  text-transform: uppercase;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+#other-btn a:hover {
+  color: red;
+}
+
+/* SEARCH button */
+#search-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: black;
+  transition: fill 0.3s;
+  margin-left: 20px;
+}
+
+#search-btn:hover svg {
+  fill: red;
+}
+
+/*compact-header */
+#compact-header {
+  display: none;
+}
+
+/* when window < 975 px */
+@media (max-width: 975px) {
+  #top-header,
+  #mid-header,
+  #bottom-header,
+  hr {
+    display: none !important;
+  }
+
+  /* compact header when minimize window  */
+  #compact-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: white;
+    padding: 12px 20px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #compact-header .big-tittle span {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: black;
+  }
+
+  #compact-header #all-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+
+  #compact-header #all-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+  }
+
+  #compact-header #all-btn div {
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+    letter-spacing: 1px;
+  }
+
+  #compact-header #all-btn:hover {
+    background-color: red;
+  }
+}
+
